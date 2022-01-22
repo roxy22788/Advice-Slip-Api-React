@@ -1,0 +1,11 @@
+.homeContainer {
+    display: flex;
+    max-width: 700px;
+    margin: 160px auto 0 auto;
+}
+
+@media (max-width: 700px) {
+    .homeContainer {
+        margin: 160px 20px 0 20px;
+    }
+}

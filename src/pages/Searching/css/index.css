@@ -1,0 +1,22 @@
+.headerSB {
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(100, 148, 237, 0.445);
+}
+
+
+.cardsContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 70px auto 0 auto;
+}
+
+.cardContainer {
+    margin-bottom: 20px;
+}
