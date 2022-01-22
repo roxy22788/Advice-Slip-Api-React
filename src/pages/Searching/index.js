@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 
+import { BsFillHouseDoorFill } from "react-icons/bs";
+import { GoMarkGithub } from 'react-icons/go';
 import './css/index.css';
 
 import SearchBar from '../../components/SearchBar'
@@ -42,11 +44,22 @@ function Searching() {
     return (
         <>
             <header className='headerSB'>
+                <Link to='/' className='btnHomeSearching'>
+                    <BsFillHouseDoorFill />
+                </Link>
                 <SearchBar 
                     place='Search Advice'
                     handleSubmit={handleSubmitSB}
                     wid={500}
                 />
+                <a 
+                    href='https://github.com/roxy22788' 
+                    target='_blank' 
+                    rel="noreferrer" 
+                    className='btnGithub'
+                >
+                    <GoMarkGithub />
+                </a>
             </header>
             <div className='cardsContainer'>
                 {

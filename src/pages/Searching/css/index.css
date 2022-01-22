@@ -20,3 +20,23 @@
 .cardContainer {
     margin-bottom: 20px;
 }
+
+.btnHomeSearching {
+    font-size: 30px;
+    color: black;
+    margin-right: 10px;
+}
+
+.btnHomeSearching:hover {
+    color: white;
+}
+
+.btnGithub {
+    font-size: 30px;
+    color: black;
+    margin-left: 10px;
+}
+
+.btnGithub:hover {
+    color: white;
+}
