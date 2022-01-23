@@ -9,6 +9,8 @@ import './css/index.css';
 import SearchBar from '../../components/SearchBar'
 import AdviceCard from '../../components/AdviceCard';
 
+import colors from '../../components/AdviceCard/data/colors';
+
 
 function Searching() {
     let params = useParams();
@@ -37,8 +39,28 @@ function Searching() {
     function handleSubmitSB(event) {
         let uriCode = encodeURIComponent(event);
         navigate(`/search_query=${uriCode}`);
-        setResearched(false);
-        window.location.reload();
+        search(uriCode)
+    }
+
+    function search(uriCode) {   
+        setResults([]);
+
+        axios.get("https://api.adviceslip.com/advice/search/" + uriCode)
+        .then((response) => {
+            if (response.data.hasOwnProperty("total_results")) {
+                let aux = response.data.slips.map((i) => i.advice);
+                setResults(aux);
+            }
+        })
+        .catch(() => {
+            console.log("ops deu errado");
+        })
+
+        document.title = decodeURIComponent(uriCode) + ' - Advice slip';
+    }
+
+    function randomColor(cls) {
+        return cls[Math.floor(Math.random() * cls.length)];
     }
 
     return (
@@ -63,8 +85,7 @@ function Searching() {
             </header>
             <div className='cardsContainer'>
                 {
-                    !researched ? ''
-                    :results.length > 0 ? results.map((i, index) => <div key={index} className='cardContainer'><AdviceCard advice={i}/> </div>)
+                    results.length > 0 ? results.map((i, index) => <div key={index} className='cardContainer'><AdviceCard advice={i} color={randomColor(colors)}/> </div>)
                     :"nothing found for this search"
                 }
             </div>
